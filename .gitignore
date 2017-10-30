@@ -1,0 +1,20 @@
+# File system junk files
+Desktop.ini
+Thumbs.db
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+.apdisk
+.fseventsd
+.env
+
+# Editor files
+*.sublime-*
+*.swp
+.c9
+.sass-cache/
+
+# Wordpress
+wp-content/*
+!wp-content/themes

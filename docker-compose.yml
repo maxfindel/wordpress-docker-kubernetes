@@ -1,0 +1,37 @@
+version: '3'
+services:
+  wordpress:
+    image: visiblevc/wordpress:0.16.0-php7.1
+    ports:
+      - 8080:80
+      - 443:443
+    volumes:
+      - ./data:/data # Required if importing an existing database.sql
+      # - ./tweaks.ini:/usr/local/etc/php/conf.d/tweaks.ini # Optional tweaks to the php.ini config
+      - ./wp-content/uploads:/app/wp-content/uploads #
+      - ./wp-content/plugins/yourplugin:/app/wp-content/plugins/yourplugin # Plugin development
+      - ./wp-content/themes/twentyseventeen:/app/wp-content/themes/twentyseventeen # Theme development
+    environment:
+      DB_HOST: db # must match db service name below
+      DB_NAME: wordpress
+      DB_PASS: ${SECURE_PASSWORD} # must match below
+      PLUGINS: >-
+        academic-bloggers-toolkit,
+        co-authors-plus,
+        [WP-API]https://github.com/WP-API/WP-API/archive/master.zip,
+      URL_REPLACE: ${YOURSITE},localhost:8080
+      WP_DEBUG: '${WP_DEBUG}'
+  db:
+    image: mysql:5.7 # or mariadb:10
+    volumes:
+      - database-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: ${SECURE_PASSWORD}
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      MYSQL_ROOT_PASSWORD: ${SECURE_PASSWORD}
+    ports:
+      - 22222:80
+volumes:
+  database-data:
