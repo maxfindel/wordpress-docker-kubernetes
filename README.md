@@ -2,7 +2,7 @@
 
 Based on 'A slightly less shitty wordpress development workflow'. Please refer to the original Readme file to get all the information: https://github.com/visiblevc/wordpress-starter
 
-## Unencrypt the .env file
+## Unencrypt the .env.enc file
 
 TODO.
 
@@ -17,7 +17,27 @@ $ docker-compose up -d && docker-compose logs -f wordpress
 
 ## Install the development dependencies
 
+Open the `package.json` file to add your project-specific values. 
+You can start with the "name" and "version" values for your project.
+In the "gulp" section below, you should add the name of the custom theme you will be developing as well as the AWS variables. It should look like this:
 
+```
+{
+  "theme": "the-theme",
+  "productionAssetURL": "https://s3.amazonaws.com/the-theme-bucket",
+  "aws": {
+    "params": {
+      "Bucket": "the-theme-bucket"
+    },
+    "accessKeyId": "putyouracceskeyidhere",
+    "secretAccessKey": "putyoursecretaccesskeyhere"
+  }
+}
+```
+
+Run `npm install` on the project folder to install the node dependencies.
+
+TODO.
 
 ## Database export / import
 

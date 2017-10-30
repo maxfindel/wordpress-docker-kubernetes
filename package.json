@@ -1,5 +1,5 @@
 {
-  "name": "example",
+  "name": "example-project",
   "version": "0.1.0",
   "scripts": {
     "wp": "wpcmd() { docker exec $(docker ps -lq) /bin/bash -c \"sudo -u www-data wp $(echo $@)\"; };wpcmd "
@@ -32,7 +32,7 @@
     "vinyl": "^0.5.1"
   },
   "gulp": {
-    "theme": "",
+    "theme": "twentyseventeen",
     "productionAssetURL": "",
     "aws": {
       "params": {

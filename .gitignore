@@ -18,3 +18,8 @@ Thumbs.db
 # Wordpress
 wp-content/*
 !wp-content/themes
+#ADD YOUR THEME HERE
+wp-content/themes/twentyseventeen/dist
+
+# Node
+node_modules/
