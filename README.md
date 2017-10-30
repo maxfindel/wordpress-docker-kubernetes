@@ -35,9 +35,7 @@ In the "gulp" section below, you should add the name of the custom theme you wil
 }
 ```
 
-Run `npm install` on the project folder to install the node dependencies.
-
-TODO.
+To get started, [install Node](https://nodejs.org/en/download/), [install Gulp](https://github.com/gulpjs/gulp/blob/master/docs/getting-started.md) and run `npm install` on the project folder to install the node dependencies.
 
 ## Database export / import
 

@@ -104,7 +104,7 @@ function twentyseventeen_setup() {
 	 * This theme styles the visual editor to resemble the theme style,
 	 * specifically font, colors, and column width.
  	 */
-	add_editor_style( array( 'assets/css/editor-style.css', twentyseventeen_fonts_url() ) );
+	add_editor_style( array( '/assets/css/editor-style.css', twentyseventeen_fonts_url() ) );
 
 	// Define and register starter content to showcase the theme on new sites.
 	$starter_content = array(
@@ -149,15 +149,15 @@ function twentyseventeen_setup() {
 		'attachments' => array(
 			'image-espresso' => array(
 				'post_title' => _x( 'Espresso', 'Theme starter content', 'twentyseventeen' ),
-				'file' => 'assets/images/espresso.jpg', // URL relative to the template directory.
+				'file' => 'dist/images/espresso.jpg', // URL relative to the template directory.
 			),
 			'image-sandwich' => array(
 				'post_title' => _x( 'Sandwich', 'Theme starter content', 'twentyseventeen' ),
-				'file' => 'assets/images/sandwich.jpg',
+				'file' => 'dist/images/sandwich.jpg',
 			),
 			'image-coffee' => array(
 				'post_title' => _x( 'Coffee', 'Theme starter content', 'twentyseventeen' ),
-				'file' => 'assets/images/coffee.jpg',
+				'file' => 'dist/images/coffee.jpg',
 			),
 		),
 
@@ -413,21 +413,21 @@ function twentyseventeen_scripts() {
 	wp_enqueue_style( 'twentyseventeen-fonts', twentyseventeen_fonts_url(), array(), null );
 
 	// Theme stylesheet.
-	wp_enqueue_style( 'twentyseventeen-style', get_stylesheet_uri() );
+	wp_enqueue_style( 'twentyseventeen-style', '/wp-content/themes/twentyseventeen/dist/css/style.css' );
 
 	// Load the dark colorscheme.
 	if ( 'dark' === get_theme_mod( 'colorscheme', 'light' ) || is_customize_preview() ) {
-		wp_enqueue_style( 'twentyseventeen-colors-dark', get_theme_file_uri( '/assets/css/colors-dark.css' ), array( 'twentyseventeen-style' ), '1.0' );
+		wp_enqueue_style( 'twentyseventeen-colors-dark', get_theme_file_uri( '//assets/css/colors-dark.css' ), array( 'twentyseventeen-style' ), '1.0' );
 	}
 
 	// Load the Internet Explorer 9 specific stylesheet, to fix display issues in the Customizer.
 	if ( is_customize_preview() ) {
-		wp_enqueue_style( 'twentyseventeen-ie9', get_theme_file_uri( '/assets/css/ie9.css' ), array( 'twentyseventeen-style' ), '1.0' );
+		wp_enqueue_style( 'twentyseventeen-ie9', get_theme_file_uri( '//assets/css/ie9.css' ), array( 'twentyseventeen-style' ), '1.0' );
 		wp_style_add_data( 'twentyseventeen-ie9', 'conditional', 'IE 9' );
 	}
 
 	// Load the Internet Explorer 8 specific stylesheet.
-	wp_enqueue_style( 'twentyseventeen-ie8', get_theme_file_uri( '/assets/css/ie8.css' ), array( 'twentyseventeen-style' ), '1.0' );
+	wp_enqueue_style( 'twentyseventeen-ie8', get_theme_file_uri( '//assets/css/ie8.css' ), array( 'twentyseventeen-style' ), '1.0' );
 	wp_style_add_data( 'twentyseventeen-ie8', 'conditional', 'lt IE 9' );
 
 	// Load the html5 shiv.
