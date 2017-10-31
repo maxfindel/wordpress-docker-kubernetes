@@ -1,6 +1,6 @@
 {
-  "name": "example-project",
-  "version": "0.1.0",
+  "name": "<PROJECT_NAME>",
+  "version": "<PROJECT_VERSION>",
   "scripts": {
     "wp": "wpcmd() { docker exec $(docker ps -lq) /bin/bash -c \"sudo -u www-data wp $(echo $@)\"; };wpcmd "
   },
@@ -32,14 +32,14 @@
     "vinyl": "^0.5.1"
   },
   "gulp": {
-    "theme": "twentyseventeen",
-    "productionAssetURL": "",
+    "theme": "<THEME_NAME>",
+    "productionAssetURL": "https://s3.amazonaws.com/<AWS_BUCKET>",
     "aws": {
       "params": {
-        "Bucket": ""
+        "Bucket": "<AWS_BUCKET>"
       },
-      "accessKeyId": "",
-      "secretAccessKey": ""
+      "accessKeyId": "<AWS_KEY>",
+      "secretAccessKey": "<AWS_SECRET>"
     }
   }
 }
