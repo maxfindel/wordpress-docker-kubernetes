@@ -18,8 +18,14 @@ Thumbs.db
 # Wordpress
 wp-content/*
 !wp-content/themes
-#ADD YOUR THEME HERE
+
+# ADD YOUR THEME HERE
 wp-content/themes/twentyseventeen/dist
 
 # Node
 node_modules/
+# The package.json is ignored using 'git update-index --skip-worktree package.json'
+package.json
+package.json.tmp1
+package.json.tmp2
+# The package-lock.json is not

@@ -12,7 +12,32 @@ https://github.com/visiblevc/wordpress-starter
 
 In this repo you will find a `docker-compose.yml` file as well as a few configuration files that will help you improve your development workflow and will help you automate your deployment processes.
 
-TODO Unencrypt the .env.enc file.
+First, we want to unencrypt the .env.enc file. In this encrypted file we will store all the confidential keys and the configuration for our project. This way, we can deploy these variables to the repo and make them easily available for CI Tools and other team members.
+
+Unencrypt the original .env.enc with the following command and obtain a .env file.
+```
+openssl enc -aes-256-cbc -salt -d -in .env.enc -out .env -k secretpassword
+```
+
+This file contains a 'docker-compose config' section that can be used directly in the docker-compose file. Just run the command `docker-compose config` to check the output.
+
+The second section of this file is the 'package.json config'. Here you can find your project-specific values as well as your AWS credentials (a sample) and bucket. Once you have your own values added to this file, you can replace them in the (ignored) package.json file using:
+```
+source .env
+sed "s;<PROJECT_NAME>;$PROJECT_NAME;g" package.json.tmp > package.json.tmp1
+sed "s;<PROJECT_VERSION>;$PROJECT_VERSION;g" package.json.tmp1 > package.json.tmp2
+sed "s;<THEME_NAME>;$THEME_NAME;g" package.json.tmp2 > package.json.tmp1
+sed "s;<AWS_BUCKET>;$AWS_BUCKET;g" package.json.tmp1 > package.json.tmp2
+sed "s;<AWS_KEY>;$AWS_KEY;g" package.json.tmp2 > package.json.tmp1
+sed "s;<AWS_SECRET>;$AWS_SECRET;g" package.json.tmp1 > package.json
+rm package.json.tmp1
+rm package.json.tmp2
+```
+
+To store changes made to the .env file and commit them (as the .env file is ignored), you want to re-encrypt the file using your own SECRET PASSOWRD (that you don't post anywhere).
+```
+openssl enc -aes-256-cbc -salt -in .env -out .env.enc -k areallysecretpassword
+```
 
 ## Running locally
 
@@ -54,12 +79,7 @@ You need an AWS User and a Bucket for your assets. It is recommended to create a
 }
 ```
 
-TODO populate the package.json using the .env file.
-
-Open the `package.json` file to add your project-specific values. 
-You can start with the "name" and "version" values for your project.  
-
-In the "gulp" section below, you should add the name of the "custom theme" you will be developing as well as the AWS variables. 
+To populate the package.json file using the .env file, just run the command listed in the previous section.
 
 The `package.json` should look like this, replacing your values for 'the-theme' and AWS:
 
