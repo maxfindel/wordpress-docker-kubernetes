@@ -120,6 +120,8 @@ To monitor your assets changes and automatically add them to your `dist` folder,
 
 Now you are ready to start developing your theme or managing your website using WordPress!
 
+To stop the containers or restart them just tun `docker-compose stop`.
+
 ## First deploy to Kubernetes
 
 TODO create a Rancher Cluster.
