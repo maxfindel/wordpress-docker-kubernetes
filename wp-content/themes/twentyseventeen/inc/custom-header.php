@@ -34,7 +34,7 @@ function twentyseventeen_custom_header_setup() {
 	 * }
 	 */
 	add_theme_support( 'custom-header', apply_filters( 'twentyseventeen_custom_header_args', array(
-		'default-image'      => get_parent_theme_file_uri( '/dist/images/header.jpg' ),
+		'default-image'      => get_parent_theme_file_uri( '/assets/images/header.jpg' ),
 		'width'              => 2000,
 		'height'             => 1200,
 		'flex-height'        => true,
@@ -44,8 +44,8 @@ function twentyseventeen_custom_header_setup() {
 
 	register_default_headers( array(
 		'default-image' => array(
-			'url'           => '%s/dist/images/header.jpg',
-			'thumbnail_url' => '%s/dist/images/header.jpg',
+			'url'           => '%s/assets/images/header.jpg',
+			'thumbnail_url' => '%s/assets/images/header.jpg',
 			'description'   => __( 'Default Header Image', 'twentyseventeen' ),
 		),
 	) );
@@ -113,6 +113,7 @@ endif; // End of twentyseventeen_header_style.
  * Customize video play/pause button in the custom header.
  *
  * @param array $settings Video settings.
+ * @return array The filtered video settings.
  */
 function twentyseventeen_video_controls( $settings ) {
 	$settings['l10n']['play'] = '<span class="screen-reader-text">' . __( 'Play background video', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'play' ) );
